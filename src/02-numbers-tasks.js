@@ -68,8 +68,11 @@ function getAverage(value1, value2) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  const katetA = x2 - x1;
+  const katetB = y2 - y1;
+  const result = Math.sqrt(katetA ** 2 + katetB ** 2);
+  return result;
 }
 
 /**
@@ -84,8 +87,11 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  if (b === 0) return 0;
+  if (a === 1) return -b;
+  const result = -(b / a);
+  return result;
 }
 
 /**
@@ -106,8 +112,19 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const dotProduct = x1 * x2 + y1 * y2;
+
+  const magnitude1 = Math.sqrt(x1 * x1 + y1 * y1);
+  const magnitude2 = Math.sqrt(x2 * x2 + y2 * y2);
+
+  if (magnitude1 === 0 || magnitude2 === 0) {
+    return 0;
+  }
+
+  const cosTheta = dotProduct / (magnitude1 * magnitude2);
+
+  return Math.acos(Math.min(1, Math.max(-1, cosTheta)));
 }
 
 /**
@@ -122,8 +139,8 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  return Number(value.toString().slice(-1));
 }
 
 /**
@@ -137,8 +154,8 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return Number(value);
 }
 
 /**
