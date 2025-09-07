@@ -74,8 +74,17 @@ function getFactorial(n) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  const start = Math.min(n1, n2);
+  const end = Math.max(n1, n2);
+  const length = end - start + 1;
+  const numbers = Array.from(
+    {
+      length,
+    },
+    (_, index) => start + index
+  );
+  return numbers.reduce((sum, current) => sum + current, 0);
 }
 
 /**
@@ -85,7 +94,7 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  * @param {number} a
  * @param {number} b
  * @param {number} c
- * @return {bool}
+ * @return {boolean}
  *
  * @example:
  *   1,2,3    =>  false
@@ -93,8 +102,11 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  if (a <= 0 || b <= 0 || c <= 0) {
+    return false;
+  }
+  return a + b > c && a + c > b && b + c > a;
 }
 
 /**
@@ -216,8 +228,10 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const charArray = [...str];
+  charArray.reverse();
+  return charArray.join('');
 }
 
 /**
@@ -232,8 +246,10 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const numString = String(num);
+  const reversedString = numString.split('').reverse().join('');
+  return Number(reversedString);
 }
 
 /**
@@ -274,8 +290,8 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  return num === 0 ? 0 : ((num - 1) % 9) + 1;
 }
 
 /**
